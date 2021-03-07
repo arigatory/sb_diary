@@ -12,7 +12,13 @@
         <Button HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Margin="10"
-                Click="ButtonAddEntry_Click"
-                Content="Добавить запись"/>
+                Click="ButtonAddEntry_Click">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Add"/>
+                    <TextBlock Text="Добавить запись" Margin="5 0 0 0"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
     </Grid>
 </Page>
