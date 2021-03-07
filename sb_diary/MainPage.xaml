@@ -6,19 +6,81 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    d:DesignWidth="1200"
+    d:DesignHeight="800">
     <Grid>
-        <Button HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Margin="10"
-                Click="ButtonAddEntry_Click">
-            <Button.Content>
-                <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Symbol="Add"/>
-                    <TextBlock Text="Добавить запись" Margin="5 0 0 0"/>
-                </StackPanel>
-            </Button.Content>
-        </Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        
+        <!-- Header -->
+        <StackPanel Grid.ColumnSpan="3" Background="#F05A28" Orientation="Horizontal">
+            <Image Source="Images/logo.png" Height="90" Margin="5"/>
+            <TextBlock Text="Ежедневник"
+                       FontSize="30"
+                       FontWeight="ExtraBold"
+                       Foreground="White"
+                       Margin="20"
+                       VerticalAlignment="Bottom"/>
+            <TextBlock Text="Версия 1.0"
+                       Foreground="#333333"
+                       VerticalAlignment="Bottom"
+                       Margin="0 0 0 25"/>
+        </StackPanel>
+
+
+        <!-- Entry list -->
+        <Grid Grid.Row="1" Grid.Column="0"
+              x:Name="entryListGrid"
+              Background="#EEEEEE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="10" Click="ButtonMove_Click">
+                    <SymbolIcon Symbol="Forward"
+                                x:Name="moveSymbolIcon"/>
+                </Button>
+                <Button Margin="10" Click="ButtonAddEntry_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="Add"/>
+                        <TextBlock Text="Добавить" Margin="5 0 0 0"/>
+                    </StackPanel>
+                </Button>
+                <Button Margin="10" Click="ButtonDeleteEntry_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="Delete"/>
+                        <TextBlock Text="Удалить" Margin="5 0 0 0"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+
+            <ListView Grid.Row="1">
+                <ListViewItem>Запись 1</ListViewItem>
+                <ListViewItem>Запись 2</ListViewItem>
+                <ListViewItem>Запись 3</ListViewItem>
+                <ListViewItem>Запись 1</ListViewItem>
+                <ListViewItem>Запись 2</ListViewItem>
+                <ListViewItem>Запись 3</ListViewItem>
+            </ListView>
+        </Grid>
+
+        <!-- Entry deatil -->
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBox Header="Заголовок" Margin="10"/>
+            <TextBox Header="Текст" Margin="10"/>
+            <CheckBox Content="Важно" Margin="10"/>
+        </StackPanel>
     </Grid>
 </Page>

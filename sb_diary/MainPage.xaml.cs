@@ -19,5 +19,18 @@ namespace sb_diary
             var messageDialog = new MessageDialog("Запись добавлена!");
             await messageDialog.ShowAsync();
         }
+
+        private void ButtonDeleteEntry_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonMove_Click(object sender, RoutedEventArgs e)
+        {
+            int column = Grid.GetColumn(entryListGrid);
+            int newColumn = column == 0 ? 2 : 0;
+            Grid.SetColumn(entryListGrid, newColumn);
+            moveSymbolIcon.Symbol = newColumn == 0 ? Symbol.Forward : Symbol.Back;
+        }
     }
 }
