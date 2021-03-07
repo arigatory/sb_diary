@@ -66,5 +66,27 @@ namespace sb_diary
             txtText.Text = entry?.Text ?? "";
             chkIsImportant.IsChecked = entry?.IsImportant;
         }
+
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateEntry();
+        }
+
+        private void CheckBox_IsCheckedChanged(object sender, RoutedEventArgs e)
+        {
+            UpdateEntry();
+        }
+
+        private void UpdateEntry()
+        {
+            var entry = entryListView.SelectedItem as Entry;
+            if (entry != null)
+            {
+                entry.Title = txtTitle.Text;
+                entry.Text = txtText.Text;
+                entry.IsImportant = chkIsImportant.IsChecked.GetValueOrDefault();
+            }
+        }
     }
 }

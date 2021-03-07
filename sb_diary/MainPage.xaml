@@ -74,9 +74,13 @@
 
         <!-- Entry deatil -->
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox Header="Заголовок" Margin="10" x:Name="txtTitle"/>
-            <TextBox Header="Текст" Margin="10" x:Name="txtText"/>
-            <CheckBox Content="Важно" Margin="10" x:Name="chkIsImportant"/>
+            <TextBox Header="Заголовок" Margin="10" x:Name="txtTitle"
+                     TextChanged="TextBox_TextChanged"/>
+            <TextBox Header="Текст" Margin="10" x:Name="txtText" TextWrapping="Wrap" AcceptsReturn="True"
+                     TextChanged="TextBox_TextChanged"/>
+            <CheckBox Content="Важно" Margin="10" x:Name="chkIsImportant"
+                      Checked="CheckBox_IsCheckedChanged"
+                      Unchecked="CheckBox_IsCheckedChanged"/>
         </StackPanel>
     </Grid>
 </Page>
