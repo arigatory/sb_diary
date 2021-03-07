@@ -78,6 +78,10 @@
                      TextChanged="TextBox_TextChanged"/>
             <TextBox Header="Текст" Margin="10" x:Name="txtText" TextWrapping="Wrap" AcceptsReturn="True"
                      TextChanged="TextBox_TextChanged"/>
+            <TextBox Header="Автор" Margin="10" x:Name="txtAuthor" 
+                     TextChanged="TextBox_TextChanged"/>
+            <DatePicker Header="Дата создания" Margin="10" x:Name="datePickerDateOfCreation"
+                        DateChanged="datePickerDateOfCreation_DateChanged"/>
             <CheckBox Content="Важно" Margin="10" x:Name="chkIsImportant"
                       Checked="CheckBox_IsCheckedChanged"
                       Unchecked="CheckBox_IsCheckedChanged"/>

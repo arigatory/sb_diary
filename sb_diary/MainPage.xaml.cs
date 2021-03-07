@@ -40,15 +40,20 @@ namespace sb_diary
             }
         }
 
-        private async void ButtonAddEntry_Click(object sender, RoutedEventArgs e)
+        private void ButtonAddEntry_Click(object sender, RoutedEventArgs e)
         {
-            var messageDialog = new MessageDialog("Запись добавлена!");
-            await messageDialog.ShowAsync();
+            var entry = new Entry { Title = "Новая запись" };
+            entryListView.Items.Add(entry);
+            entryListView.SelectedItem = entry;
         }
 
         private void ButtonDeleteEntry_Click(object sender, RoutedEventArgs e)
         {
-
+            var entry = entryListView.SelectedItem as Entry;
+            if (entry != null)
+            {
+                entryListView.Items.Remove(entry);
+            }
         }
 
         private void ButtonMove_Click(object sender, RoutedEventArgs e)
@@ -64,9 +69,10 @@ namespace sb_diary
             var entry = entryListView.SelectedItem as Entry;
             txtTitle.Text = entry?.Title ?? "";
             txtText.Text = entry?.Text ?? "";
+            txtAuthor.Text = entry?.Author ?? "";
+            datePickerDateOfCreation.Date = entry?.DateOfCreation ?? DateTime.Now;
             chkIsImportant.IsChecked = entry?.IsImportant;
         }
-
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -85,8 +91,15 @@ namespace sb_diary
             {
                 entry.Title = txtTitle.Text;
                 entry.Text = txtText.Text;
+                entry.Author = txtAuthor.Text;
+                entry.DateOfCreation = datePickerDateOfCreation.Date.Date;
                 entry.IsImportant = chkIsImportant.IsChecked.GetValueOrDefault();
             }
+        }
+
+        private void datePickerDateOfCreation_DateChanged(object sender, DatePickerValueChangedEventArgs e)
+        {
+            UpdateEntry();
         }
     }
 }

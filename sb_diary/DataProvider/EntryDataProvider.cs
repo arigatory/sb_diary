@@ -24,8 +24,20 @@ namespace sb_diary.DataProvider
             {
                 entriesList = new List<Entry>
                 {
-                    new Entry{Title="Моя первая заметка", Text="Я начал делать приложение для Skillbox. Надеюсь, что у меня получается", IsImportant=false},
-                    new Entry{Title="Мысли вслух", Text="Было бы хорошо сделать когда-нибудь это приложение кросс-платформенным, но я пока не знаю как", IsImportant=true}
+                    new Entry{
+                        Title="Моя первая заметка",
+                        Text="Я начал делать приложение для Skillbox. Надеюсь, что у меня получается",
+                        IsImportant=false,
+                        Author = "Я",
+                        DateOfCreation = DateTime.Today
+                    },
+                    new Entry{
+                        Title="Мысли вслух", 
+                        Text="Было бы хорошо сделать когда-нибудь это приложение кросс-платформенным, но я пока не знаю как", 
+                        IsImportant=true,
+                        Author = "Я",
+                        DateOfCreation = DateTime.Today
+                    }
                 };
             }
             else
@@ -40,7 +52,7 @@ namespace sb_diary.DataProvider
                     }
                 }
             }
-            return entriesList;
+            return entriesList.OrderBy(ent => ent.DateOfCreation);
         }
 
         public async Task SaveEntriesAsync(IEnumerable<Entry> entries)
