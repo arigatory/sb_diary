@@ -29,14 +29,14 @@ namespace sb_diary.DataProvider
                         Text="Я начал делать приложение для Skillbox. Надеюсь, что у меня получается",
                         IsImportant=false,
                         Author = "Я",
-                        DateOfCreation = DateTime.Today
+                        DateOfCreation = DateTimeOffset.Now
                     },
                     new Entry{
                         Title="Мысли вслух", 
                         Text="Было бы хорошо сделать когда-нибудь это приложение кросс-платформенным, но я пока не знаю как", 
                         IsImportant=true,
                         Author = "Я",
-                        DateOfCreation = DateTime.Today
+                        DateOfCreation = DateTimeOffset.Now
                     }
                 };
             }

@@ -13,7 +13,7 @@ namespace sb_diary.Model
         private string _text;
         private bool _isImportant;
         private string _author;
-        private DateTime _dateOfCreation;
+        private DateTimeOffset _dateOfCreation;
 
         public string Title
         {
@@ -51,7 +51,7 @@ namespace sb_diary.Model
                 OnPropertyChanged();
             }
         }
-        public DateTime DateOfCreation
+        public DateTimeOffset DateOfCreation
         {
             get => _dateOfCreation; set
             {

@@ -42,7 +42,7 @@ namespace sb_diary
 
         private void ButtonAddEntry_Click(object sender, RoutedEventArgs e)
         {
-            var entry = new Entry { Title = "Новая запись" };
+            var entry = new Entry { Title = "Новая запись", DateOfCreation = DateTimeOffset.Now };
             entryListView.Items.Add(entry);
             entryListView.SelectedItem = entry;
         }
@@ -70,7 +70,7 @@ namespace sb_diary
             txtTitle.Text = entry?.Title ?? "";
             txtText.Text = entry?.Text ?? "";
             txtAuthor.Text = entry?.Author ?? "";
-            datePickerDateOfCreation.Date = entry?.DateOfCreation ?? DateTime.Now;
+            datePickerDateOfCreation.SelectedDate = entry?.DateOfCreation ?? DateTimeOffset.Now;
             chkIsImportant.IsChecked = entry?.IsImportant;
         }
 
